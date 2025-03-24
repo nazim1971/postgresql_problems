@@ -5,8 +5,8 @@ create Table books (
     id SERIAL PRIMARY key,
     title VARCHAR(100) NOT null,
     author VARCHAR(50) not NULL,
-    price DECIMAL (10,2),
-    stock INT, 
+    price DECIMAL (10,2) CHECK (price >= 0) NOT NULL,
+    stock INT NOT NULL, 
     published_year INT CHECK (published_year BETWEEN 1000 AND 9999)
 )
 
@@ -50,7 +50,7 @@ CREATE table orders (
      id SERIAL PRIMARY KEY,
      customer_id int REFERENCES customers(id) ON DELETE CASCADE,
      book_id int REFERENCES books(id) ON DELETE CASCADE,
-     quantity int CHECK( quantity > 0),
+     quantity int CHECK( quantity > 0) not NULL,
      order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 
