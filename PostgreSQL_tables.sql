@@ -10,7 +10,6 @@ create Table books (
     published_year INT CHECK (published_year BETWEEN 1000 AND 9999)
 )
 
-drop table books
 
 INSERT INTO books (title, author, price, stock, published_year)  
 VALUES  
@@ -21,9 +20,6 @@ VALUES
 ('Eloquent JavaScript', 'Marijn Haverbeke', 30.00, 20, 2018);
 
 
-SELECT * from books
-
-
 --Customer table
 CREATE Table customers (
     id SERIAL PRIMARY KEY,
@@ -32,8 +28,6 @@ CREATE Table customers (
     joined_date date DEFAULT CURRENT_DATE
 )
 
-drop table customers
-
 INSERT INTO customers (name, email, joined_date)  
 VALUES  
 ('Alice', 'alice@gmail.com', '2023-01-10'),  
@@ -41,9 +35,6 @@ VALUES
 ('Charlie', 'charlie@gmail.com', '2023-03-20'),  
 ('David', 'david@gmail.com', '2023-04-25'),  
 ('Emma', 'emma@gmail.com', '2023-05-30');
-
-
-SELECT * from customers
 
 -- Order table 
 CREATE table orders (
@@ -54,8 +45,6 @@ CREATE table orders (
      order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 
-drop Table orders
-
 insert INTO orders (customer_id, book_id, quantity)
 VALUES
 (1,2,5),
@@ -65,4 +54,9 @@ VALUES
 (5,3,5),
 (5,5,2)
 
-SELECT * from orders
+
+-- SELECT * from customers
+
+-- SELECT * from books
+
+-- SELECT * from orders
