@@ -11,7 +11,7 @@ where price = (SELECT max(price) from books)
 
 -- Problem 3 solution
 -- Here i use join for add customer with order number in one table 
-SELECT customers.name , count(*) 
+SELECT customers.name , count(*) as total_orders
 from orders 
 join customers on orders.customer_id = customers.id 
 GROUP BY customers.name
@@ -19,13 +19,13 @@ GROUP BY customers.name
 
 -- Problem 4 solution
 -- here i use aggregate function sum 
-SELECT sum(orders.quantity * books.price)
+SELECT sum(orders.quantity * books.price) as total_revenue
 from orders
 join books on orders.book_id = books.id;
 
 
 -- Problem 5 solution
-SELECT customers.name, count(*)
+SELECT customers.name, count(*) orders_count
 from orders
 join customers on orders.customer_id = customers.id
 GROUP BY customers.name
@@ -35,12 +35,13 @@ HAVING count(*) > 1
 
 -- Problem 6 solution
 -- avg aggregate function to find out the average price
-SELECT round(avg(price), 2) from books
+SELECT round(avg(price), 2) as avg_book_price from books 
 
 
 
 -- Problem 7 solution
 --select * from books
+
 UPDATE books 
 set  price  = price * 1.10
 where published_year <2000
